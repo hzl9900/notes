@@ -139,17 +139,17 @@ x.~decltype(x)();   // ok, C++11
             - bool类型
             - 字符类型
                 - 窄字符类型
-                    - 普通字符类型：char，signed char，unsigned char
+                    - 普通字符类型：char，signed char，unsigned char （注意signed char，unsigned char是窄字符类型，但不是字符类型；也就是说窄字符类型不是字符类型的子集）
                     - char8_t类型
                 - 宽字符类型：char16_t, char32_t,wchar_t
             - 有符号整数类型
-                - 标准有符号整数类型
+                - 标准有符号整数类型：signed char, short int，int, long int, long long int
                 - 扩展有符号整数类型（由实现定义）
             - 无符号整数类型
-                - 标准无符号整数类型
-                - 扩展无符号整数类型
+                - 标准无符号整数类型: unsigned char, unsigned short int, unsigned int, unsigned long int, unsigned long long int
+                - 扩展无符号整数类型（与扩展有符号整数类型一一对应）
         - 浮点数类型
-            - 标准浮点数类型
+            - 标准浮点数类型：float，double，long double
             - 扩展浮点数类型
                 - 定宽浮点数类型
                 - 其他由实现定义的浮点数类型
@@ -193,7 +193,31 @@ struct enable_if<true,T> {typedef T type;};
 
 当我们需要使用类型T的时候，用std::enable_if_t<expr, T>替换,如果expr求值为true，可以推导出T，否则触发SFINAE，从重载决议中去除。
 
+## char, unsigned char, signed char
+
+同时承担三种任务：寻址单元，算术类型和字符类型。
+
+寻址单元应该使用std::byte，算术类型应该使用定长类型比如uint8_t, 剩下的责任只有字符类型
+
+## byte的实现
+
+对多种类型的辨析详见：https://stackoverflow.com/q/77097673
+
+byte可以实现为有作用域枚举，也可以实现为其他类型的别名。
+
+byte代表寻址单元，但没有整数类型的功能，byte可以进行位运算，但不能进行普通代数运算。
+
 ## std::move 和 std::forward
+
+## 宽字符和多字节字符的区别
+
+多字节也就是变长编码，宽字符就是将一个字符存放在一个定长对象中。
+
+问题出在unicode出现的早期，ms误将宽字符长度定为16位，然而16位实际上不足以存放所有字符。
+
+## UCS-2和UTF-16的区别
+
+UCS-2: 仅以2字节存储的，码位小于U+FFFF的Unicode字符。
 
 ## 模板的实例化、特化和偏特化
 
@@ -206,3 +230,4 @@ struct enable_if<true,T> {typedef T type;};
 - 移动语义窃取资源，似乎是对无法直接交换对象的存储的一种变通手段
 - SFINAE的使用方法
 - RAII的真实含义
+
