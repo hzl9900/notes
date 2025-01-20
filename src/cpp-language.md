@@ -1,5 +1,31 @@
 # 关于C++
 
+## C++的一些学习材料
+
+- Itanium C++ ABI
+    - https://itanium-cxx-abi.github.io/cxx-abi/abi.html
+- cppreference
+    - https://en.cppreference.com/
+    - https://zh.cppreference.com/
+- open-std
+    - https://open-std.org/
+- online draft
+    - http://eel.is/c++draft/
+- BS的首页
+    - https://www.stroustrup.com/
+- 几本书
+    - C++ primer
+    - The C++ Programming Language（TCPPL）
+    - The Design and Evolution of C++
+- 标准库实现
+    - MSVC
+    - LLVM
+    - GCC
+
+## C++的一些人
+
+Bjarne Stroustrup
+
 ## 抄书
 
 以下部分来自cppreference或者C++标准
@@ -172,8 +198,15 @@ x.~decltype(x)();   // ok, C++11
         - 非联合体类型
         - 联合体类型
 
-基础类型实际上就只有三种：void类型，std::nullptr_t类型和算术类型
-复合类型包括：引用类型，指针类型，成员指针类型，数组类型，函数类型，枚举类型，类类型
+C++的类型分为基础类型和复合类型。
+
+基础类型实际上就只有三种：void类型，std::nullptr_t类型和算术类型。
+算术类型包括整数类型和浮点数类型。
+整数类型包括bool类型，字符类型，有符号整数类型和无符号整数类型。
+字符类型包括窄字符类型和宽字符类型。
+窄字符类型包括普通字符类型（char, unsigned char, signed char）和char8_t类型
+宽字符类型包括char16_t,char32_t,wchar_t
+复合类型包括引用类型，指针类型，成员指针类型，数组类型，函数类型，枚举类型和类类型。
 
 ## RAII
 
