@@ -2,6 +2,8 @@
 
 ## 更新记录
 
+2025/04/18 初稿
+
 ## 多态的定义
 
 1967年，Christopher Strachey 在 Fundmental Concepts in Programming Languages 3.6.4 节中提出多态的概念。
