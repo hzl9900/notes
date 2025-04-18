@@ -109,5 +109,5 @@ int main() {
 
 ## 参考资料
 
-[中文维基](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%80%81_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))
-Christopher Strachey 《Fundmental Concepts in Programming Languages》
+- [中文维基](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%80%81_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))
+- Christopher Strachey 《Fundmental Concepts in Programming Languages》
