@@ -3,16 +3,16 @@
 ## C++的一些学习材料
 
 - Itanium C++ ABI
-    - https://itanium-cxx-abi.github.io/cxx-abi/abi.html
+    - <https://itanium-cxx-abi.github.io/cxx-abi/abi.html>
 - cppreference
-    - https://en.cppreference.com/
-    - https://zh.cppreference.com/
+    - <https://en.cppreference.com/>
+    - <https://zh.cppreference.com/>
 - open-std
-    - https://open-std.org/
+    - <https://open-std.org/>
 - online draft
-    - http://eel.is/c++draft/
+    - <http://eel.is/c++draft/>
 - BS的首页
-    - https://www.stroustrup.com/
+    - <https://www.stroustrup.com/>
 - 几本书
     - C++ primer
     - The C++ Programming Language（TCPPL）
@@ -40,7 +40,8 @@ C++中的每一个对象、引用、函数和表达式都会关联一个类型�
 声明的不为非静态数据成员的对象和引用是变量。
 
 C++程序可以创建、销毁、引用、访问并操作对象。
-在C++中，一个对象拥有这些性质：
+在C++中，一个对象拥有这些性质
+
 - 大小
 - 对齐要求
 - 存储期
@@ -54,6 +55,7 @@ C++程序可以创建、销毁、引用、访问并操作对象。
 对象可以使用定义、new表达式、throw表达式、更改联合体的活跃成员和求值要求临时对象的表达式显式创建。显式对象创建完全定义了所创建的对象。
 
 隐式生存期类型的对象也可以由以下操作隐式创建：
+
 - 在常量求值以外的场合，开始类型unsigned char或std::byte的数组生存期的操作，此时在该数组中创建这种对象，
 - 调用以下分配函数，此时在分配的存储中创建这种对象：
 - 调用以下对象表示复制函数，此时在目标存储区域或结果中创建这种对象
@@ -74,12 +76,15 @@ C++程序可以创建、销毁、引用、访问并操作对象。
 对于char，signed char和unsigned char类型的对象，除非它们是大小过大的位域，否则它的对象表示的每个位都参与它的值表示，而且每一种位模式都表示一个独立的值（没有填充位或陷阱位，不允许值的多种表示）
 
 一个对象可以拥有子对象。子对象包括：
+
 - 成员对象
 - 基类对象
 - 数组元素
+
 不是其他任何对象的子对象的对象称为完整对象。
 完整对象、成员对象和数组元素也被称为最终派生对象，以便和基类子对象区分开。
 对于某个类，
+
 - 它的非静态数据成员
 - 它的非虚直接基类，以及
 - 它不是抽象类时，它的虚基类。
@@ -87,11 +92,13 @@ C++程序可以创建、销毁、引用、访问并操作对象。
 
 如果一个子对象是基类子对象或者声明有`[[no_unique_address]]`属性的非静态数据成员，那么它是潜在重叠的子对象。
 只有在满足以下所有条件时，对象obj的大小才有可能为零：
+
 - obj是潜在重叠的子对象
 - obj的类型是没有虚成员函数和虚基类的类类型
 - obj没有非零大小的子对象，也没有非零长度的无名位域
 
 对于满足以上所有条件的对象obj：
+
 - 如果obj是没有非静态长远的标准布局类类型的基类子对象，那么它的大小为零
 - 否则，由实现定义在哪些情况下obj的大小为零
 
@@ -141,7 +148,7 @@ C++标准定义了两种实现：宿主（hosted）和独立（freestanding）�
 
 ## 伪析构函数
 
-https://zhuanlan.zhihu.com/p/410232329
+<https://zhuanlan.zhihu.com/p/410232329>
 
 ```c++
 typedef int Int;
@@ -165,14 +172,15 @@ x.~decltype(x)();   // ok, C++11
             - bool类型
             - 字符类型
                 - 窄字符类型
-                    - 普通字符类型：char，signed char，unsigned char （注意signed char，unsigned char是窄字符类型，但不是字符类型；也就是说窄字符类型不是字符类型的子集）
+                    - 普通字符类型：char，signed char，unsigned char
+                    -（注意signed char，unsigned char是窄字符类型，但不是字符类型；也就是说窄字符类型不是字符类型的子集）
                     - char8_t类型
                 - 宽字符类型：char16_t, char32_t,wchar_t
             - 有符号整数类型
                 - 标准有符号整数类型：signed char, short int，int, long int, long long int
                 - 扩展有符号整数类型（由实现定义）
             - 无符号整数类型
-                - 标准无符号整数类型: unsigned char, unsigned short int, unsigned int, unsigned long int, unsigned long long int
+                - 标准无符号整数类型: unsigned char/short/int/long int/long long int
                 - 扩展无符号整数类型（与扩展有符号整数类型一一对应）
         - 浮点数类型
             - 标准浮点数类型：float，double，long double
@@ -234,7 +242,7 @@ struct enable_if<true,T> {typedef T type;};
 
 ## byte的实现
 
-对多种类型的辨析详见：https://stackoverflow.com/q/77097673
+对多种类型的辨析详见：<https://stackoverflow.com/q/77097673>
 
 byte可以实现为有作用域枚举，也可以实现为其他类型的别名。
 
@@ -363,6 +371,7 @@ class 可以用于模板参数声明 `template<class T>`
 如果为引用指定的初始化器是(), 则程序IF
 
 初始化器的语义：
+
 - 如果初始化引用，参考引用初始化
 - 如果初始化对象，给定类型为T
     - 如果使用 =， 对象会复制初始化
@@ -370,11 +379,13 @@ class 可以用于模板参数声明 `template<class T>`
     - 如果使用（），则对象会直接初始化
 
 值初始化：空初始化器
+
 - `T obj();`
 - `T obj{};`
 - `new T()`
 
 值初始化的效果：
+
 - 如果T是类类型
     - 如果T默认初始化选择了一个构造函数，并且由用户提供，那么对象首先被零初始化
     - 任何情况下，对象都被默认初始化
@@ -384,10 +395,12 @@ class 可以用于模板参数声明 `template<class T>`
 注：语法`T obj();`声明一个不接收参数，并返回T的函数，在C++11之前，使用`T obj = T()`,这里值初始化一个临时对象并复制初始化，多数编译器可以优化掉复制。
 
 默认初始化：不使用初始化器
+
 - `T obj;`
 - `new T`
 
 默认初始化的效果：
+
 - 如果T是类类型，那么考虑各构造函数并实施针对空实参列表的重载决议，调用所选的构造函数，以提供新对象的初始值
 - 如果T是数组类型，那么该数组的每个元素都被默认初始化
 - 否则不进行初始化
@@ -396,6 +409,7 @@ class 可以用于模板参数声明 `template<class T>`
 零初始化在语言中没有专用语法。
 
 零初始化的效果：
+
 - 如果T是标量，对象的初始值是将整数字面量0显式转换到T的值
 - 如果T是非联合体类类型，那么
     - 初始化所有填充位为0
@@ -407,7 +421,6 @@ class 可以用于模板参数声明 `template<class T>`
     - 零初始化对象的首个非静态具名数据成员
 - 如果T是数组类型，那么零初始化每个元素
 - 如果T是引用类型，那么不做任何事
-
 
 注：`T obj = T();`直接初始化+复制初始化,  而`T obj = T{}`是列表初始化.
 
@@ -479,13 +492,14 @@ C++可以利用引用返回值。
 ## 函数匹配
 
 候选函数：
+
 - 与被调用的函数同名
 - 声明在调用点可用
 
 可行函数
+
 - 形参数量与实参数量相等
 - 实参类型与形参类型相同，或者可以转换为形参的类型
-
 - 该函数每个实参的匹配都不劣于其他可行函数需要的匹配
 - 至少有一个实参匹配优于其他可行函数提供的匹配
 
